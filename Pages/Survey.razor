@@ -1,0 +1,35 @@
+@page "/survey"
+
+<div>
+    <h3>Gillar du katter?</h3>
+    <label>
+        <input type="radio" name="answer" @bind="selectedAnswer" value="Ja" /> Ja
+    </label>
+    <label>
+        <input type="radio" name="answer" @bind="selectedAnswer" value="Nej" /> Nej
+    </label>
+    <br />
+    <button class="btn btn-primary" @onclick="SubmitSurvey">Skicka</button>
+</div>
+
+@code {
+    [Inject]
+    private IJSRuntime? JSRuntime { get; set; }
+
+    private string selectedAnswer;
+
+    private async Task SubmitSurvey()
+    {
+
+
+        // Återställ svaret efter inskickning
+        selectedAnswer = null;
+
+        // Kontrollera att JSRuntime inte är null innan du använder det
+        if (JSRuntime != null)
+        {
+            // Visa ett alertmeddelande efter inskickning
+            await JSRuntime.InvokeVoidAsync("alert", "Tack för att du röstade!");
+        }
+    }
+}
