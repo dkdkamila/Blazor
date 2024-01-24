@@ -1,5 +1,7 @@
 @page "/survey"
 
+@page "/survey"
+
 <div>
     <h3>Gillar du katter?</h3>
     <label>
@@ -16,11 +18,10 @@
     [Inject]
     private IJSRuntime? JSRuntime { get; set; }
 
-    private string selectedAnswer;
+    private string? selectedAnswer;
 
     private async Task SubmitSurvey()
     {
-
 
         // Återställ svaret efter inskickning
         selectedAnswer = null;
