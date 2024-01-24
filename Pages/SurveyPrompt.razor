@@ -1,18 +1,14 @@
 @page "/survey"
-
-@page "/survey"
-
-<div>
-    <h3>Gillar du katter?</h3>
-    <label>
-        <input type="radio" name="answer" @bind="selectedAnswer" value="Ja" /> Ja
-    </label>
-    <label>
-        <input type="radio" name="answer" @bind="selectedAnswer" value="Nej" /> Nej
-    </label>
-    <br />
-    <button class="btn btn-primary" @onclick="SubmitSurvey">Skicka</button>
-</div>
+<h3>Gillar du katter?</h3>
+<label>
+    <input type="radio" name="answer" @bind="selectedAnswer" /> Ja
+</label>
+<label>
+    <input type="radio" name="answer" @bind="selectedAnswer" /> Nej
+</label>
+<br />
+<br>
+<button class="btn btn-primary" @onclick="SubmitSurvey">Skicka</button>
 
 @code {
     [Inject]

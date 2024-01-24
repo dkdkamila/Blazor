@@ -3,18 +3,19 @@
     <h3>Konvertering</h3>
 
     <div>
-        <label for="meterInput">Mätare till Fot:</label>
+        <label for="meterInput">Meter till Fot:</label>
         <input type="number" id="meterInput" @bind="meterValue" />
         <button class="btn btn-primary" @onclick="ConvertMeterToFeet">Konvertera</button>
         <span>@resultMeterToFeet</span>
     </div>
 
     <div>
-        <label for="kmhInput">km/h till Miles/hour:</label>
+        <label for="kmhInput">km/h till mph:</label>
         <input type="number" id="kmhInput" @bind="kmhValue" />
         <button class="btn btn-primary" @onclick="ConvertKmhToMph">Konvertera</button>
-        <span>@resultKmhToMph</span>
+        <span>@resultMeterToFeet</span>
     </div>
+
 </div>
 
 @code {
@@ -40,5 +41,7 @@
 
         // Avrunda till heltal
         resultKmhToMph = (int)Math.Round(mphValue);
+
+
     }
 }
