@@ -1,57 +1,70 @@
 ﻿@page "/JSON"
-@inject HttpClient Http
 
+@inject HttpClient httpClient
+@using System.Text.Json
+@inherits LayoutComponentBase
 
+<h3>JSON</h3>
 
-<h1>Weather</h1>
-
-<p>This component demonstrates fetching data from the server.</p>
-
-@if (forecasts == null)
+@if (jsonData != null)
 {
-    <p><em>Loading...</em></p>
+    <div>
+    <h4>Kurser</h4>
+    <ul>
+        @foreach (var kurs in jsonData.Kurser?.ToArray() ?? Array.Empty<Kurs>())
+            {
+                <li>
+                    <strong>Kurskod:</strong> @kurs?.Kurskod<br />
+                    <strong>Namn:</strong> @kurs?.Namn<br />
+                    <strong>Progression:</strong> @kurs?.Progression<br />
+                    <strong>Kursplan:</strong> <a href="@kurs?.Kursplan" target="_blank">Kursplan</a>
+                </li>
+            }
+        </ul>
+    </div>
 }
 else
 {
-    <table class="table">
-    <thead>
-        <tr>
-            <th>Date</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
-            <th>Summary</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var forecast in forecasts)
-            {
-                <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <p>Laddar JSON-data...</p>
 }
 
 @code {
-    private WeatherForecast[]? forecasts;
+    private JsonData? jsonData;
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
+        try
+        {
+            // Läs in JSON-data från fil
+            var jsonText = await httpClient.GetStringAsync("kurs/kurser.json");
+            jsonData = JsonSerializer.Deserialize<JsonData>(jsonText, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
     }
 
-    public class WeatherForecast
+    // Modellklasser för JSON-data
+    public class JsonData
     {
-        public DateOnly Date { get; set; }
 
-        public int TemperatureC { get; set; }
+        public List<Kurs>? Kurser { get; set; }
+    }
 
-        public string? Summary { get; set; }
+    public class Information
+    {
+        public string? Info { get; set; }
+    }
 
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    public class Kurs
+    {
+        public string? Kurskod { get; set; }
+        public string? Namn { get; set; }
+        public string? Progression { get; set; }
+        public string? Kursplan { get; set; }
     }
 }
