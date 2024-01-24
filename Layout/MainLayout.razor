@@ -1,16 +1,48 @@
 ﻿@inherits LayoutComponentBase
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+<body class="d-flex flex-column h-100">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/"><img src="images/DBlogo.png" alt="logo" title="logo" height="150" /></a>
+                <div class="d-flex">
+                    <span class="date-info">Dagens datum: @DateTime.Now.ToString("yyyy-MM-dd")</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container-fluid flex-grow-1">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active btn btn-link text-center text-dark btn-outline-secondary" href="/">Startsidan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-link text-center text-dark btn-outline-secondary" href="/convert">Konvertering</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark btn btn-link text-center btn-outline-secondary" href="/json">JSON</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                @Body
+            </main>
         </div>
+    </div>
+    <footer class="footer text-center mt-auto py-3 bg-light">
+        <div class="container">
+            &copy; 2024 - Av Dominika Berg - Du kan kontakta mig på e-post: <a href="mailto:exempel@mail.com">dode1800@student.miun.se</a>
+        </div>
+    </footer>
 
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
-</div>
+    <script src="_content/YourAppName/js/jquery.min.js"></script>
+    <script src="_content/YourAppName/js/bootstrap.bundle.min.js"></script>
+    <script src="_content/YourAppName/js/site.js"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+
