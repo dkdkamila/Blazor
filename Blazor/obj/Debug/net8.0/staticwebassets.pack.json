@@ -33,6 +33,10 @@
       "PackagePath": "staticwebassets/icon-192.png"
     },
     {
+      "Id": "/Users/dominikaberg/Desktop/Blazor/Blazor/wwwroot/images/DBlogo.png",
+      "PackagePath": "staticwebassets/images/DBlogo.png"
+    },
+    {
       "Id": "/Users/dominikaberg/Desktop/Blazor/Blazor/wwwroot/index.html",
       "PackagePath": "staticwebassets/index.html"
     },

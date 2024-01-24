@@ -26,16 +26,16 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/dominikaberg/Desktop/Blazor/Blazor/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ291bnRlci5yYXpvcg==
+[/Users/dominikaberg/Desktop/Blazor/Blazor/Pages/Convert.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ29udmVydC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/dominikaberg/Desktop/Blazor/Blazor/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/dominikaberg/Desktop/Blazor/Blazor/Pages/Weather.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvV2VhdGhlci5yYXpvcg==
+[/Users/dominikaberg/Desktop/Blazor/Blazor/Pages/JSON.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSlNPTi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/dominikaberg/Desktop/Blazor/Blazor/_Imports.razor]
