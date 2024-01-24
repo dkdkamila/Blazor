@@ -1,47 +1,46 @@
 ﻿@page "/convert"
+
+<h3>Konvertering</h3>
+
+<!-- Meter to Feet Conversion -->
 <div>
-    <h3>Konvertering</h3>
+    <label for="meters">Ange antal meter:</label>
+    <input type="number" id="meters" @bind="meterInput" />
+    <button class="btn btn-primary" @onclick="ConvertMeterToFeet">Konvertera meter till fot</button>
+    @if (meterResult.HasValue)
+    {
+        <p>Resultat: @meterResult.Value fot</p>
+    }
+</div>
 
-    <div>
-        <label for="meterInput">Meter till Fot:</label>
-        <input type="number" id="meterInput" @bind="meterValue" />
-        <button class="btn btn-primary" @onclick="ConvertMeterToFeet">Konvertera</button>
-        <span>@resultMeterToFeet</span>
-    </div>
-
-    <div>
-        <label for="kmhInput">km/h till mph:</label>
-        <input type="number" id="kmhInput" @bind="kmhValue" />
-        <button class="btn btn-primary" @onclick="ConvertKmhToMph">Konvertera</button>
-        <span>@resultMeterToFeet</span>
-    </div>
-
+<!-- Km/h to Miles per Hour Conversion -->
+<div>
+    <label for="kmh">Ange antal km/h:</label>
+    <input type="number" id="kmh" @bind="kmhInput" />
+    <button class="btn btn-primary" @onclick="ConvertKmToMiles">Konvertera km/h till miles per hour</button>
+    @if (milesResult.HasValue)
+    {
+        <p>Resultat: @milesResult.Value miles per hour</p>
+    }
 </div>
 
 @code {
-    private double meterValue;
-    private string? resultMeterToFeet;
-
-    private double kmhValue;
-    private int resultKmhToMph;
+    private double? meterResult;
+    private double? milesResult;
+    private double meterInput;
+    private double kmhInput;
 
     private void ConvertMeterToFeet()
     {
-        // Konvertera meter till fot (1 meter = 3.28084 fot)
-        double feetValue = meterValue * 3.28084;
-
-        // Avrunda till två decimaler
-        resultMeterToFeet = $"{feetValue:N2} fot";
+        // Konverteringslogik för meter till fot
+        meterResult = meterInput * 3.28084;
+        milesResult = null; // Nollställ resultatet för den andra konverteringen
     }
 
-    private void ConvertKmhToMph()
+    private void ConvertKmToMiles()
     {
-        // Konvertera km/h till miles/hour (1 km/h = 0.621371 miles/hour)
-        double mphValue = kmhValue * 0.621371;
-
-        // Avrunda till heltal
-        resultKmhToMph = (int)Math.Round(mphValue);
-
-
+        // Konverteringslogik för km/h till miles per hour
+        milesResult = kmhInput * 0.621371;
+        meterResult = null; // Nollställ resultatet för den andra konverteringen
     }
 }
